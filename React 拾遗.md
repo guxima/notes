@@ -37,8 +37,8 @@ refs提供了一种props之外的父子组件交互形式
 ## Context
 类似*上下文*的概念，react组件设计的这种机制，可以实现组件树自某个节点自动向下传值，这种方式突破了嵌套节点传值通过props声明的界限，一直隐式的*贯穿*至末端的所有叶子节点，非常强大。
 - 自节点向下传值`class components`需做两件事情
-  - 声明成员函数 `getChildContext()`，由它返回的对象将作为**Context**实体向下传递
-  - 声明类静态属性 `ClassComponents.childContextTypes`，是对以上返回对象的**全部字段**的类型约束，类型种类参见[prop-types](https://www.npmjs.com/package/prop-types)
+  - 声明成员函数 `getChildContext()`，由它返回的对象将作为**Context**实体向下传递
+  - 声明类静态属性 `ClassComponents.childContextTypes`，是对以上返回对象的**全部字段**的类型约束，类型种类参见[prop-types](https://www.npmjs.com/package/prop-types)
 - 任何子节点都可以引用context，需在引用前增加子节点`ClassComponents.contextTypes`字段类型约束，然后通过`this.context`获取属性值，否则context结果为`{}`
 - 向下传递过程中context可以被修改，方法同定义
 - context的更新需要借助于更新组件的*props*或者*setState()*，每次更新时都会调用`getChildContext()`，更新后的值会自上而下的反馈到所有子树节点。
