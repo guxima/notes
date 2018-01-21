@@ -54,7 +54,7 @@
             var image = document.querySelector('#img');
             alert([image.naturalWidth, image.naturalHeight]);
         </script>
-5. 不能手动修改value的`input`元素，类型选button，避免readOnly属性兼容性问题。
+5. 不能手动修改value的`input`元素，类型选button，避免readOnly属性兼容性问题。
 
     &lt;input type='button' value='' /&gt; NOT <del>&lt;input type='text' readOnly /&gt;</del>
     
