@@ -65,3 +65,8 @@
         <div class='frame-wrapper'>
             <iframe src='http://fakedomain.com' width='100%' height='100%' frameborder='0'>
         </div>
++ 合理设置`script`的标签属性`defer`和`async`。
+
+![script load](https://www.w3.org/TR/2017/REC-html52-20171214/images/asyncdefer.svg)
+
++ another
