@@ -1,7 +1,7 @@
 # HTML 实践
 不同开发人员的HTML编码时风格迥异，总结了一些有益的应用实践。
 ## 标签&属性
-+ 表单元素加上`name`属性，即符合语义又可作为CSS样式选择器避免引入过多的`class`。
+- 表单元素加上`name`属性，即符合语义又可作为CSS样式选择器避免引入过多的`class`。
     
     通过`input[name=age]`即可以获取JS引用又可以定制CSS样式。
 
@@ -11,13 +11,13 @@
                 color:blue;
             }
         </style>
-+ 不允许用户修改值的表单元素，类型选`button`，避免`readonly`属性兼容性问题。兼容性问题表现在设置了`readonly`的textInput无法通过JS修改其`value`属性值。
+- 不允许用户修改值的表单元素，类型选`button`，避免`readonly`属性兼容性问题。兼容性问题表现在设置了`readonly`的textInput无法通过JS修改其`value`属性值。
 
     &lt;input type='button' name='readonly' value='' /&gt; NOT <del>&lt;input type='text' readOnly /&gt;</del>
 
-+ `form`标签的属性`method`、`action`不能为空。
-+ 通过`label`内嵌表单元素，可读性好，定制样式方便。
-+ 使用`details`标签和`open`属性实现内容折叠效果。
+- `form`标签的属性`method`、`action`不能为空。
+- 通过`label`内嵌表单元素，可读性好，定制样式方便。
+- 使用`details`标签和`open`属性实现内容折叠效果。
 
         <details>
             <summary>可见的摘要文字小标题1</summary>
@@ -46,12 +46,12 @@
             alert(e.target.open)
         }, false)
         
-+ 使用属性`hidden`实现元素的隐藏显示。
+- 使用属性`hidden`实现元素的隐藏显示。
 
         <h4 hidden>看不见的标题</h4>
         <a hidden>看不见的链接</a>
         <button hidden>看不见的表单元素</button>
-+ `img`元素的属性`width`和`height`设置渲染尺寸，实际尺寸可以通过`naturalWidth`和`naturalHeight`获取。
+- `img`元素的属性`width`和`height`设置渲染尺寸，实际尺寸可以通过`naturalWidth`和`naturalHeight`获取。
         
         <!--以下图片在页面上显示宽：68px，高：27px。-->
         <img id='img' src='https://source.qunarzz.com/common/hf/logo.png' width='68' height='27' alt='logo'/>
@@ -60,13 +60,12 @@
             var image = document.querySelector('#img');
             alert([image.naturalWidth, image.naturalHeight]);
         </script>
-+ 使用`iframe`时设定属性`width`、`height`和`frameborder`。嵌入页面时外部需要容器元素
+- 使用`iframe`时设定属性`width`、`height`和`frameborder`。嵌入页面时外部需要容器元素
         
         <div class='frame-wrapper'>
             <iframe src='http://fakedomain.com' width='100%' height='100%' frameborder='0'>
         </div>
-+ 合理设置`script`的标签属性`defer`和`async`。
+- 合理设置`script`的标签属性`defer`和`async`。
+<img alt='' src='https://www.w3.org/TR/2017/REC-html52-20171214/images/asyncdefer.svg' width='690'/>
 
-![script load](https://www.w3.org/TR/2017/REC-html52-20171214/images/asyncdefer.svg)
-
-+ another
+- another
