@@ -65,7 +65,5 @@
         <div class='frame-wrapper'>
             <iframe src='http://fakedomain.com' width='100%' height='100%' frameborder='0'>
         </div>
-- 合理设置`script`的标签属性`defer`和`async`。
+- 合理设置`script`的标签属性`defer`和`async`；两者都是和HTML解析并行加载资源，其中**async**是加载完中断HTML解析立即执行脚本，defer是等到HTML解析完后执行脚本。
 <img alt='' src='https://www.w3.org/TR/2017/REC-html52-20171214/images/asyncdefer.svg' width='690'/>
-
-- another
