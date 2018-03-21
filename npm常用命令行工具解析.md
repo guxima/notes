@@ -179,7 +179,7 @@
 说明：
 - 身份校验时用户名、密码和邮箱三者必须和注册时一致。
 - 新用户首次注册会发邮件要求验证邮箱。
-- 验证成功后授权信息会保存到**.npmrc**文件中。
+- 验证成功后授权信息会保存到**.npmrc**文件中。
 
 ## npm publish
 发布*package*到*npm registry*
@@ -250,7 +250,7 @@
 ## 一些打印输出的命令
 没有特殊功能，仅作相关内容打印输出。
 
-        npm bin [-g|--global] #输出npm安装可执行文件的目录
+        npm bin [-g|--global] #输出npm安装可执行文件的目录
         npm prefix [-g|--global] #输出local prefix（从当前目录向上级查找包含 package.json 文件的目录）
-        npm root [-g|--global] #输出有效的node_modules目录
+        npm root [-g|--global] #输出有效的node_modules目录
 
