@@ -4,7 +4,7 @@
 
 *本文并未涵盖所有npm命令行工具，其它未提及内容参见官网。*
 ## npm doctor
-运行一系列的环境检查，依赖工具是否安装，目录读写是否有权限等等。
+运行一系列的环境检查，依赖工具是否安装，目录读写是否有权限等等。
 
         npm doctor
 
@@ -80,7 +80,7 @@
   - --only={prod[uction]|dev[elopment]} 忽略**NODE_ENV**的设置，仅安装**devDependencies**或者**非devDependencies**对应的依赖。
   - -g|--global，把指定`<name>`的package或者当前package（未指定`<name>`时）安装至全局。
   - 如果当前目录下有和`<name>`相同的文件或者目录，则会先尝试安装本地文件再查找registry。
-  - --dry-run 仅输出安装过程的结果，不进行本地安装。
+  - --dry-run 仅输出安装过程的结果，不进行本地安装。
   - -f|--force 忽略本地缓存，强制从远程更新资源。
 
 安装路径：
@@ -107,7 +107,7 @@
         npm ci
 说明：
 - 工程必须有**package-lock.json** or **npm-shrinkwrap.json**
-- **package.json**和*package lock*不一致会失败
+- **package.json**和*package lock*不一致会失败
 - 一次安装所有依赖，不能安装单独的模块
 - 安装前清空已有的*node_module*目录
 
@@ -130,14 +130,14 @@
         alias: npm run
 
 说明：
-- 可以省略*run*直接调用的*script*有**test**, **start**, **restart**, and **stop**。
+- 可以省略*run*直接调用的*script*有**test**, **start**, **restart**, and **stop**。
 - 内置脚本**env**可以列出脚本运行时可用的环境变量，*env*可以被配置相同脚本名覆盖功能。
-- 本地安装的**node_modules/.bin**中的可执行文件可以直接不加前缀调用(该目录在运行时会加到系统环境变量*PATH*)。
+- 本地安装的**node_modules/.bin**中的可执行文件可以直接不加前缀调用(该目录在运行时会加到系统环境变量*PATH*)。
 - *--* 可用于给脚本透传自定义参数，脚本必须通过**npm run**调用，并且不会传至*pre script 或 post script*。`npm run test -- --arg="val"`
 - 环境变量中有特殊值**PWD**，**NODE**。
 
 ## npm start
-运行*npm scripts*配置的*start*命令。
+运行*npm scripts*配置的*start*命令。
 
         npm start [-- <args>]
 
@@ -171,7 +171,7 @@
 - 可以通过 `npm link ../local/path` 的形式link本地的开发包，包的处理过程不变。
 
 ## npm adduser
-在指定或默认的*npm registry*服务中增加账号。
+在指定或默认的*npm registry*服务中增加账号。
 
         npm adduser [--registry=url] [--scope=@orgname] [--always-auth] [--auth-type=legacy]
         aliases: login, add-user
@@ -203,7 +203,7 @@
         aliases: dist-tags
 
 说明：
-- `npm publish`会设置和发布版本号对应的*dist-tag*，**latest**，安装时也是取这个tag对应的版本。
+- `npm publish`会设置和发布版本号对应的*dist-tag*，**latest**，安装时也是取这个tag对应的版本。
 - *dist-tag*开发阶段可以用来迭代不同的版本号
 - 命名避免和版本号混淆
 
@@ -213,7 +213,7 @@
         npm deprecate <pkg>[@<version>] <message>
 
 说明：
-- 推荐以此取代`npm unpublish`
+- 推荐以此取代`npm unpublish`
 - 可以指定版本区间，如*my-thing@"< 0.2.3"*
 
 ## npm owner
@@ -242,7 +242,7 @@
         npm pack [[<@scope>/]<pkg>...]
 
 说明：
-- 不指定参数时*package*默认为当前的*package*
+- 不指定参数时*package*默认为当前的*package*
 - *tarball* 文件命名*\<name\>-\<version\>.tgz*
 - 先下载*package*到*npm cache*目录，然后再拷贝到当前文件，每次调用会覆盖上一次内容。
 - 打包的内容不包含*node_modules*目录。
