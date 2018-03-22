@@ -8,24 +8,24 @@
 
         npm doctor
 
-## npm init 
+## npm init
 
 从当前目录初始化一个**node_module**，生成*package.json*文件。
 
         npm init [-f|--force|-y|--yes] [-scope]
 
 ## npm version
-生成新的版本号并同步修改*package.json*和*npm-shrinkwrap.json*中的配置。
-        
+生成新的版本号并同步修改*package.json*、*package-lock.json*和*npm-shrinkwrap.json*中的配置。
+
         npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease | from-git]
 
 说明：
-- 运行在*git*环境下可以生成版本提交记录。
+- 运行在*git*仓库里可以生成版本提交记录。
 - 使用*from-git*选项，将读取最新的*git tag*作为版本号。
 
 ## npm config
 
-读取配置项，可以通过多种方式设定配置项，如命令行、环境变量、**.npmrc**、**package.json**或其它方式。
+读取配置项，通过命令行、环境变量、**.npmrc**、**package.json**或其它方式都可以设定配置项。
 
         npm config set <key> <value> [-g|--global]
         npm config get <key>
@@ -39,17 +39,20 @@
 
 说明：
 - 配置项的设定或者修改会同步更新到*user npmrc files*或者*global npmrc files*，不会更新*project npmrc files*。
+- 不同的设定方式，生成的配置项的前缀不一样。
+  - **.npmrc**的选项前缀*npm_config_xxx*
+  - **.package.json**的选项前缀*npm_package_xxx*
 
-## npm search 
+## npm search
 
-模糊搜索registry中所有的*package meta*，找到和搜索项匹配的内容并高亮输出结果。
+模糊搜索所有的*package meta*，找到和搜索项匹配的内容并高亮输出结果。
 
         npm search [-l|--long] [--json] [--parseable] [--no-description] [search terms ...]
         aliases: s, se, find
 
 ## npm view
 
-查看*registry*中指定*package*的信息。
+查看指定*package*的信息。
 
         npm view [--json] [<@scope>/]<name>[@<version>] [<field>[.<subfield>]...]
         aliases: info, show, v
@@ -74,14 +77,14 @@
 
 说明：
 
-  - --production , NODE_ENV环境变量设置为production时, npm不会安装devDependencies列表里的内容。
-        
+  - *--production* , NODE_ENV环境变量设置为production时, npm不会安装devDependencies列表里的内容。
+
         NODE_ENV=production npm i <package>
-  - --only={prod[uction]|dev[elopment]} 忽略**NODE_ENV**的设置，仅安装**devDependencies**或者**非devDependencies**对应的依赖。
-  - -g|--global，把指定`<name>`的package或者当前package（未指定`<name>`时）安装至全局。
-  - 如果当前目录下有和`<name>`相同的文件或者目录，则会先尝试安装本地文件再查找registry。
-  - --dry-run 仅输出安装过程的结果，不进行本地安装。
-  - -f|--force 忽略本地缓存，强制从远程更新资源。
+  - *--only={prod[uction]|dev[elopment]}* 忽略**NODE_ENV**的设置，仅安装**devDependencies**或者**非devDependencies**对应的依赖。
+  - *[-g|--global]*，把指定`<name>`的package或者当前package（未指定`<name>`时）安装至全局。
+  - 如果当前目录下有和`<name>`相同的文件或者目录，则会先尝试安装本地文件再查找*remote registry*。
+  - *--dry-run* 仅输出安装过程的结果，不进行本地安装。
+  - *[-f|--force]* 忽略本地缓存，强制从远程更新资源。
 
 安装路径：
 - 全局安装
@@ -91,7 +94,7 @@
   - **./node_module/**
   - **./node_module/bin/**
 
-## npm uninstall 
+## npm uninstall
 移除包及其配置项。
 
         npm uninstall [<@scope>/]<pkg>[@<version>]... [-S|--save|-D|--save-dev|-O|--save-optional|--no-save]
@@ -106,8 +109,7 @@
 
         npm ci
 说明：
-- 工程必须有**package-lock.json** or **npm-shrinkwrap.json**
-- **package.json**和*package lock*不一致会失败
+- 工程必须有**package-lock.json** or **npm-shrinkwrap.json**，并且如果和**package.json**不一致会失败
 - 一次安装所有依赖，不能安装单独的模块
 - 安装前清空已有的*node_module*目录
 
@@ -123,8 +125,8 @@
 - --depth=[0...] 指定输出的结果树层级
 - [--prod|--dev] 仅输出在**dependencies**或**devDependencies**配置的包。
 
-## npm run-script
-运行配置在**package.json**里的包脚本。
+## npm run
+运行配置在**package.json**里的**scripts**节点下的命令脚本。
 
         npm run-script <command> [--silent] [-- <args>...]
         alias: npm run
@@ -142,7 +144,7 @@
         npm start [-- <args>]
 
 说明：
-没有配置*start*命令时，默认执行 `node server.js`
+- 没有配置*start*命令时，默认执行 `node server.js`
 
 ## npm outdated
 从**registry**处检查指定的包或者已安装的包是否过时。
@@ -163,7 +165,7 @@
 
         npm link (in package dir)
         npm link [<@scope>/]<pkg>[@<version>]
-        
+
         alias: npm ln
 
 说明：
@@ -203,7 +205,7 @@
         aliases: dist-tags
 
 说明：
-- `npm publish`会设置和发布版本号对应的*dist-tag*，**latest**，安装时也是取这个tag对应的版本。
+- `npm publish`会设置和发布版本号对应的*dist-tag*为**latest**，安装时也是取这个tag对应的版本。
 - *dist-tag*开发阶段可以用来迭代不同的版本号
 - 命名避免和版本号混淆
 
@@ -222,7 +224,7 @@
         npm owner add <user> [<@scope>/]<pkg>
         npm owner rm <user> [<@scope>/]<pkg>
         npm owner ls [<@scope>/]<pkg>
-        
+
         aliases: author
 
 ## npm token
@@ -233,7 +235,7 @@
         npm token revoke <id|token>
 
 说明：
-- `npm login`认证成功后的授权token会保存至**~/.npmrc**
+- `npm login`认证成功后的授权token会保存至`~/.npmrc`
 - 可以管理当前用户授权的所有token
 
 ## npm pack
