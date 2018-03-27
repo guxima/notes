@@ -67,6 +67,7 @@
         </div>
 - 合理设置`script`的标签属性`defer`和`async`；两者都是和HTML解析并行加载资源，其中**async**是加载完中断HTML解析立即执行脚本，defer是等到HTML解析完后执行脚本。
 <img alt='' src='https://www.w3.org/TR/2017/REC-html52-20171214/images/asyncdefer.svg' width='690'/>
+
 - 元素样式*class*的处理可以使用`Element.classList`获取一个*DOMTokenList*对象，然后通过对象的方法如*add*，*remove*，*toggle*等操作*class*。
   - 可以避免字符串拼接过程中的空格。
   - *toggle*可以代替判断逻辑。
