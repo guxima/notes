@@ -2,7 +2,7 @@
 不同开发人员的HTML编码时风格迥异，总结了一些有益的应用实践。
 ## 标签&属性
 - 表单元素加上`name`属性，即符合语义又可作为CSS样式选择器避免引入过多的`class`。
-    
+
     通过`input[name=age]`即可以获取JS引用又可以定制CSS样式。
 
         <input type='text' name='age' />
@@ -45,14 +45,14 @@
         document.querySelector('details').addEventListener('toggle', function(e){
             alert(e.target.open)
         }, false)
-        
+
 - 使用属性`hidden`实现元素的隐藏显示。
 
         <h4 hidden>看不见的标题</h4>
         <a hidden>看不见的链接</a>
         <button hidden>看不见的表单元素</button>
 - `img`元素的属性`width`和`height`设置渲染尺寸，实际尺寸可以通过`naturalWidth`和`naturalHeight`获取。
-        
+
         <!--以下图片在页面上显示宽：68px，高：27px。-->
         <img id='img' src='https://source.qunarzz.com/common/hf/logo.png' width='68' height='27' alt='logo'/>
         <script>
@@ -61,9 +61,12 @@
             alert([image.naturalWidth, image.naturalHeight]);
         </script>
 - 使用`iframe`时设定属性`width`、`height`和`frameborder`。嵌入页面时外部需要容器元素
-        
+
         <div class='frame-wrapper'>
             <iframe src='http://fakedomain.com' width='100%' height='100%' frameborder='0'>
         </div>
 - 合理设置`script`的标签属性`defer`和`async`；两者都是和HTML解析并行加载资源，其中**async**是加载完中断HTML解析立即执行脚本，defer是等到HTML解析完后执行脚本。
 <img alt='' src='https://www.w3.org/TR/2017/REC-html52-20171214/images/asyncdefer.svg' width='690'/>
+- 元素样式*class*的处理可以使用`Element.classList`获取一个*DOMTokenList*对象，然后通过对象的方法如*add*，*remove*，*toggle*等操作*class*。
+  - 可以避免字符串拼接过程中的空格。
+  - *toggle*可以代替判断逻辑。
