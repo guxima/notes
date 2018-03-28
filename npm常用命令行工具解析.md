@@ -136,7 +136,7 @@
 - 内置脚本**env**可以列出脚本运行时可用的环境变量，*env*可以被配置相同脚本名覆盖功能。
 - 本地安装的**node_modules/.bin**中的可执行文件可以直接不加前缀调用(该目录在运行时会加到系统环境变量*PATH*)。
 - *--* 可用于给脚本透传自定义参数，脚本必须通过**npm run**调用，并且不会传至*pre script 或 post script*。`npm run test -- --arg="val"`
-- 环境变量中有特殊值**PWD**，**NODE**。
+- 环境变量中有特殊值**INIT_CWD**，**PWD**，**NODE**。
 
 ## npm start
 运行*npm scripts*配置的*start*命令。
