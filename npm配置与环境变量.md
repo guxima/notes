@@ -39,7 +39,7 @@ npm_package_license=ISC
 
 ### 设定方式一：命令行标记
 
-这种方法是在*npm*的命令行加上自定义标记完成配置的设定：
+这种方法是在*npm*的命令行加上标记完成配置的设定或者覆盖：
 
         npm config list --myname=todd --one-two_three_four
         //输出以下内容
@@ -84,6 +84,7 @@ npm_package_license=ISC
         key1 = "value"
         key2 = "/Users/todd.ma/.npmrc"
 
+**这里需要注意一点，经测试发现设置为数组的*key*，不会出现在*npm-scripts*运行时的环境变量中。**
 
 ## package的配置
 
@@ -91,13 +92,12 @@ npm_package_license=ISC
 
 ```
 {
-  "name": "g2npm-pkg",
-  "version": "4.0.0",
+  "name": "xxx-pkg",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": "g2npm.js",
+  "bin": "pkg-bin.js",
   "scripts": {
-    "arg": "myarg",
     "test": "echo \"Error: no test specified\" && echo $PWD, $1"
   },
   "myconf":{
@@ -110,14 +110,27 @@ npm_package_license=ISC
   "author": "todd.ma <todd.ma@qunar.com>",
   "license": "ISC",
   "dependencies": {
-    "connect": "^3.6.6",
-    "lodash": "^4.17.5",
-    "todd_qnr": "^3.0.1"
+    "connect": "^3.6.6"
   },
   "devDependencies": {}
 }
 ```
+上述文件中的*key*除了*npm*的保留字意外，可以添加自定义的包配置，如上述配置中的**myconf**和**myary**，数据格式自由设定。
 
 ## npm-scripts环境变量
 
-*npm-scripts*时*npm*会设置自己的环境变量，并优先选择小写的变量名。
+*npm-scripts*时*npm*会设置自己的环境变量，变量名全部以小写格式。
+
+- 获取*npm*的配置项（无论通过哪种方式设定），加前缀*npm_config_*
+- 获取*package.json*的配置项，加前缀*npm_package_*
+
+一些需要注意的点：
+
+- 通过命令行标记的形式设定的*npm*配置项，如果标记名含有“`-`”，在注入环境变量时会转化成“`_`”。
+
+  如`npm run env --one-two_three`将得到环境变量`npm_config_one_two_three=true`
+- *npm*配置项中的**数组**没有注入到环境变量中。
+- *package.json*中的配置项含有“`-`”，在注入环境变量时也会转化成“`_`”。
+- *package.json*中的**config**节点转换成的环境变量，可以通过*npm*的配置设定进行更改。
+
+  如`npm set <package-name>:<key> newValue`，会改变*package.json*中*config*项中*key*对应的环境变量*npm_package_config_key*的值为*newValue*。
