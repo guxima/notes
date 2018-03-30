@@ -159,8 +159,8 @@
 ## npm link
 创建*pkg*的符号链接，处理过程包含两步：
 1. 在全局文件夹创建包的符号链接。
-   - 创建符号链接*{npm-config-prefix}/lib/node_modules/{package-name}*
-   - 若提供*bin*文件配置，则创建符号链接*{npm-config-prefix}/bin/{bin-name}*
+   - 创建符号链接`{npm-config-prefix}/lib/node_modules/{package-name}`
+   - 若提供*bin*文件配置，则创建符号链接`{npm-config-prefix}/bin/{bin-name}`
 2. 在其它地方被*link*时，会在运行项目的目录创建该*pkg*符号链接至全局安装包。
 
 
@@ -184,7 +184,7 @@
 说明：
 - 身份校验时用户名、密码和邮箱三者必须和注册时一致。
 - 新用户首次注册会发邮件要求验证邮箱。
-- 验证成功后授权信息会保存到**.npmrc**文件中。
+- 验证成功后授权信息会保存到`.npmrc`文件中。
 
 ## npm publish
 发布*package*到*npm registry*
@@ -194,7 +194,7 @@
         Sets tag 'latest' if no --tag specified
 
 说明：
-- 可以通过*.gitignore* or *.npmignore*文件来忽略指定的项目文件， *.npmignore*权重最大。
+- 可以通过`.gitignore` or `.npmignore`文件来忽略指定的项目文件， `.npmignore`权重最大。
 - 默认的*public tag*是**latest**
 - 发布使用的*name*和*version*组合只能使用一次。
 
@@ -248,7 +248,7 @@
 
 说明：
 - 不指定参数时*package*默认为当前的*package*
-- *tarball* 文件命名*\<name\>-\<version\>.tgz*
+- *tarball* 文件命名`<name>-<version>.tgz`
 - 先下载*package*到*npm cache*目录，然后再拷贝到当前文件，每次调用会覆盖上一次内容。
 - 打包的内容不包含*node_modules*目录。
 
