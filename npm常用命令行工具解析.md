@@ -25,7 +25,7 @@
 
 ## npm config
 
-读取配置项，通过命令行、环境变量、**.npmrc**、**package.json**或其它方式都可以设定配置项。
+读写配置项，通过命令行、环境变量、**.npmrc**可以设定配置项。
 
         npm config set <key> <value> [-g|--global]
         npm config get <key>
@@ -39,7 +39,7 @@
 
 说明：
 - 配置项的设定或者修改会同步更新到*user npmrc files*或者*global npmrc files*，不会更新*project npmrc files*。
-- 不同的设定方式，生成的配置项的前缀不一样。
+- 不同的设定方式，生成的*环境变量*的前缀不一样。
   - **.npmrc**的选项前缀*npm_config_xxx*
   - **.package.json**的选项前缀*npm_package_xxx*
 
@@ -170,6 +170,8 @@
         alias: npm ln
 
 说明：
+
+- 无参数时会创建当前*package*的符号链接至全局。
 - *package-name*和*bin-name*从包目录*package.json*中获取而不是目录名。
 - 可以通过 `npm link ../local/path` 的形式link本地的开发包，包的处理过程不变。
 
