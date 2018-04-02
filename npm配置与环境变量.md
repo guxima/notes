@@ -26,12 +26,12 @@ npm_package_license=ISC
 - npm_config_
 - npm_package_
 
-对比*npm*的配置项发现，原来以上两种前缀的环境变量均来自于**npm**的配置和**package**的配置，并在*npm-scripts*时被注入。
+对比*npm*的配置项，不难发现以上两种前缀的环境变量均来自于**npm**的配置和**package**的配置，并在*npm-scripts*时被注入。
 
 先区分两个概念：
 
 - **npm的配置**是设定*npm*工具本身的一些属性，可以根据项目、用户或者全局做自定义设置。
-- **package配置**是针对特定*package*做的设定，配置项集中在*package.json*中。
+- **package配置**是针对特定*package*做的设定，配置项集中在**package.json**中。
 
 ## npm的配置
 
@@ -47,7 +47,7 @@ npm_package_license=ISC
         myname = "todd"
         one-two_three_four = true
 
-需要说明的是以上配置过程**不会对标记名中的*连字符*、*下划线*进行转换**，之所以强调这个是因为在环境变量设置过程中有不同，详见[npm-scripts环境变量](#npm-scripts环境变量)。
+需要说明的是以上配置过程**不会对标记名中的*连字符*、*下划线*进行转换**，之所以强调这个是因为在*npm-scripts*设置过程中有不同，详见[npm-scripts环境变量](#npm-scripts环境变量)。
 
 ### 设定方式二：环境变量
 
@@ -63,7 +63,7 @@ npm_package_license=ISC
 
 ### 设定方式三：*&period;npmrc*文件
 
-从四个相关的文件地址读取，但是不一定都存在，按读取优先级顺序排列如下：
+从四个相关的文件地址读取，但是不一定都存在，按读取优先级排列如下：
 
 - 每个项目的配置`my-project/.npmrc`
 - 用户的配置`$HOME/.npmrc`
@@ -119,7 +119,7 @@ npm_package_license=ISC
 
 ## npm-scripts环境变量
 
-*npm-scripts*时*npm*会设置自己的环境变量，变量名全部以小写格式。
+除了系统环境变量之外，*npm-scripts*运行时*npm*也会设置自己的环境变量，变量名全部以小写格式。
 
 - 获取*npm*的配置项（无论通过哪种方式设定），加前缀*npm_config_*
 - 获取*package.json*的配置项，加前缀*npm_package_*
@@ -128,7 +128,7 @@ npm_package_license=ISC
 
 - 通过命令行标记的形式设定的*npm*配置项，如果标记名含有“`-`”，在注入环境变量时会转化成“`_`”。
 
-  如`npm run env --one-two_three`将得到环境变量`npm_config_one_two_three=true`
+  如命令标记`--one-two_three`将得到环境变量`npm_config_one_two_three=true`
 - *npm*配置项中的**数组**没有注入到环境变量中。
 - *package.json*中的配置项含有“`-`”，在注入环境变量时也会转化成“`_`”。
 - *package.json*中的**config**节点转换成的环境变量，可以通过*npm*的配置设定进行更改。
