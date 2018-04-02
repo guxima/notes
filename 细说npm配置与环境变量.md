@@ -124,11 +124,11 @@ npm_package_license=ISC
 - 获取*npm*的配置项（无论通过哪种方式设定），加前缀*npm_config_*
 - 获取*package.json*的配置项，加前缀*npm_package_*
 
-一些需要注意的点：
+一些需要注意的点：
 
 - 通过命令行标记的形式设定的*npm*配置项，如果标记名含有“`-`”，在注入环境变量时会转化成“`_`”。
 
-  如命令标记`--one-two_three`将得到环境变量`npm_config_one_two_three=true`
+  如命令标记`--one-two_three`将得到环境变量`npm_config_one_two_three=true`
 - *npm*配置项中的**数组**没有注入到环境变量中。
 - *package.json*中的配置项含有“`-`”，在注入环境变量时也会转化成“`_`”。
 - *package.json*中的**config**节点转换成的环境变量，可以通过*npm*的配置设定进行更改。
