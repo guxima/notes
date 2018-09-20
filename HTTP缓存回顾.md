@@ -11,8 +11,8 @@ http缓存是一种网络请求的机制，通过备份网络资源的方式解�
 
 ## 缓存应用的对象
 
-http缓存应用基本局限于*GET*方式的请求，常见的几种可以运用缓存的响应：
-- *200(OK)*的*GET*响应，返回内容包含HTML、图片或其他文件。
+http缓存应用基本局限于*GET*方式的请求，常见的几种可以运用缓存的响应：
+- *200(OK)*的*GET*响应，返回内容包含HTML、图片或其他文件。
 - *301(Moved Permanently)*的永久重定向。
 - *404(Not Found)*页面
 - *206(Partial Content)*分块的未结束的响应
@@ -62,10 +62,10 @@ http缓存应用基本局限于*GET*方式的请求，常见的几种可以运�
 
 ## 缓存校验
 
-到达缓存内容的过期时间后，内容需要被验证或者重新获取。只有在服务端返回*强校验器*或者*弱校验器*时缓存才会校验。参见 [Validators](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#Validators)
+到达缓存内容的过期时间后，内容需要被验证或者重新获取。只有在服务端返回*强校验器*或者*弱校验器*时缓存才会校验。参见 [Validators](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#Validators)
 
-**[ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)** 响应头可以用作强校验器，在客户端再次发请求时作为请求头 [If-None-Match](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) 的值传给服务端进行校验。
+**[ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag)** 响应头可以用作强校验器，在客户端再次发请求时作为请求头 [If-None-Match](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match) 的值传给服务端进行校验。
 
 **[Last-Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified)** 响应头可以用作弱校验器，客户端再次发请求时作为请求头 [If-Modified-Since](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Modified-Since) 的值传给服务端校验。
 
-服务端在验证时可以返回普通的响应状态*200*，也可以返回没有body的[304](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304)响应状态表示客户端可以继续使用缓存文件，并更新被缓存文件过期时间。
+服务端在验证时可以返回普通的响应状态*200*，也可以返回没有body的[304](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304)响应状态表示客户端可以继续使用缓存文件，并更新被缓存文件过期时间。
