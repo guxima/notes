@@ -16,10 +16,12 @@ const mds = fs.readdirSync('./')
         return stat2.ctimeMs - stat1.ctimeMs;
     });
 
-const content = fs.readFileSync(readme, {
-    encoding:'utf-8'
-});
+let content = `
+# TABLE OF CONTENTS
 
-fs.writeFileSync(readme, content.replace('- ', `- [${mds[0]}](/${mds[0]})${os.EOL}- `))
+${mds.map(title => `- [${title}](/${encodeURIComponent(title)})`).join(os.EOL)}
+`;
+
+fs.writeFileSync(readme, content);
 
 

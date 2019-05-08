@@ -1,3 +1,5 @@
+# GraphQL-从入门到喜欢
+
 GraphQL是一种为API提供的查询语言，并且提供了实现这些数据查询的运行机制。最初由facebook于2013年创建，用于描述*Client-Server*服务模型的能力和需求。后来脱离编码语言层面提出了一个开放的标准，从2015年开始得到不断完善优化，2018年11月20日完成[*Working Draft*](https://graphql.github.io/graphql-spec/)。
 
 官方提供了12种语言版本的GraphQL实现库，[GraphQL.js](https://graphql.github.io/graphql-js/)是在Javascript方向的实现，本文以此包为基础带大家领略**GraphQL**编码的风采。
