@@ -39,7 +39,7 @@ graphql(schema, query, rootValue).then( ret => {
     console.log(ret ); //{ data: { fruits: { id: 'YmFubmF', name: 'cherry' } } }
 })
 ```
-有三个地方需要注意，我们对照上例代码讲解下：
+**有四个地方需要注意，我们对照上例代码讲解下：**
 
 首先是*Schema*中查询接口的参数定义，**定义参数需要声明类型，参数可以有默认值**，上例中*Schema*定义了*fruits*查询，并声明参数*id*，且*id*默认值为*ZnJ1aXQ*。
 ```
@@ -71,7 +71,7 @@ const rootValue = {
             {id: 'YmFubmF', name: 'cherry' }
         ];
 
-        return cols.find( item => (item.id === args.id ))
+        return cols.find( item => (item.id === args.id ));
     }
 };
 ```
@@ -94,3 +94,20 @@ const rootValue = {
     variableValues: exeContext.variableValues
 }
 ```
+
+最后是*resolver*方法`fruits(...)`的返回值，上例中我们直接返回了一个对象字面量（`{id:'...', name:'...'}`）,如果我们返回的字段值是*函数*会怎么样呢？我们修改`rootValue`如下：
+```javascript
+const rootValue = {
+    fruits: (args, ctx, info) => { 
+        return {
+            id: (args, ctx, info) => {
+                //do something like fetch or sum
+            },
+            name: (args, ctx, info) => {
+                //follow as id
+            }
+        }
+    }
+};
+```
+可以看到之前的字面量形式的*id*，*name*字段都改成了函数，并且都可以成为该字段的*resolver*，同理每个`rootValue`的字段都可以根据需要改成*resolver*的形式，这样可以极大的扩展`rootValue`的组织形式。
